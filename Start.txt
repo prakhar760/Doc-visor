@@ -1,0 +1,98 @@
+
+How to build a Query engine for documents:
+
+https://mlops.community/combine-and-query-multiple-documents-with-llm/
+https://codemaker2016.medium.com/talk-with-documents-using-llamaindex-3952c76bd511
+https://alphasec.io/query-your-own-documents-with-llamaindex-and-langchain/
+https://medium.com/@indirakrigan/a-purposeful-rendezvous-with-milvus-the-vector-database-2acee4da25e2
+s
+
+Start Milvus
+
+https://milvus.io/blog/2021-11-19-run-milvus-2.0-on-windows.md
+
+
+
+
+
+
+wget https://raw.githubusercontent.com/milvus-io/pymilvus/v2.0.x/examples/hello_milvus.py
+
+pip install llama-index==0.6.2
+llama-index in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (0.6.2)
+
+ pip install langchain==0.0.154
+langchain in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (0.0.154)
+
+
+
+PS C:\Projects\tradvisor> pip install llama-index nltk milvus pymilvus langchain python-dotenv openai
+Requirement already satisfied: llama-index in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (0.9.15)
+Requirement already satisfied: nltk in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (3.8.1)
+Requirement already satisfied: milvus in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (2.2.14)
+Requirement already satisfied: pymilvus in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (2.3.3)
+Requirement already satisfied: langchain in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (0.0.350)
+Requirement already satisfied: python-dotenv in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (1.0.0)
+Requirement already satisfied: openai in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (1.3.9)
+Requirement already satisfied: SQLAlchemy>=1.4.49 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from SQLAlchemy[asyncio]>=1.4.49->llama-index) (1.4.50)
+Requirement already satisfied: aiohttp<4.0.0,>=3.8.6 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from llama-index) (3.9.0)
+Requirement already satisfied: beautifulsoup4<5.0.0,>=4.12.2 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from llama-index) (4.12.2)
+Requirement already satisfied: dataclasses-json in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from llama-index) (0.5.14)
+Requirement already satisfied: deprecated>=1.2.9.3 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from llama-index) (1.2.14)
+Requirement already satisfied: fsspec>=2023.5.0 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from llama-index) (2023.10.0)
+Requirement already satisfied: httpx in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from llama-index) (0.25.1)
+Requirement already satisfied: nest-asyncio<2.0.0,>=1.5.8 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from llama-index) (1.5.8)
+Requirement already satisfied: numpy in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from llama-index) (1.26.2)
+Requirement already satisfied: pandas in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from llama-index) (2.1.3)
+Requirement already satisfied: requests>=2.31.0 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from llama-index) (2.31.0)
+Requirement already satisfied: tenacity<9.0.0,>=8.2.0 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from llama-index) (8.2.3)
+Requirement already satisfied: tiktoken>=0.3.3 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from llama-index) (0.5.1)
+Requirement already satisfied: types-protobuf<5.0.0.0,>=4.24.0.4 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from llama-index) (4.24.0.4)
+Requirement already satisfied: typing-extensions>=4.5.0 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from llama-index) (4.8.0)
+Requirement already satisfied: typing-inspect>=0.8.0 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from llama-index) (0.9.0)
+Requirement already satisfied: click in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from nltk) (8.1.7)
+Requirement already satisfied: joblib in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from nltk) (1.3.2)
+Requirement already satisfied: regex>=2021.8.3 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from nltk) (2023.10.3)
+Requirement already satisfied: tqdm in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from nltk) (4.66.1)
+Requirement already satisfied: grpcio<=1.58.0,>=1.49.1 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from pymilvus) (1.58.0)
+Requirement already satisfied: protobuf>=3.20.0 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from pymilvus) (4.25.1)
+Requirement already satisfied: environs<=9.5.0 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from pymilvus) (9.5.0)
+Requirement already satisfied: ujson>=2.0.0 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from pymilvus) (5.8.0)
+Requirement already satisfied: minio>=7.0.0 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from pymilvus) (7.2.0)
+Requirement already satisfied: PyYAML>=5.3 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from langchain) (6.0.1)
+Requirement already satisfied: jsonpatch<2.0,>=1.33 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from langchain) (1.33)
+Requirement already satisfied: langchain-community<0.1,>=0.0.2 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from langchain) (0.0.2)
+Requirement already satisfied: langchain-core<0.2,>=0.1 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from langchain) (0.1.0)
+Requirement already satisfied: langsmith<0.1.0,>=0.0.63 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from langchain) (0.0.65)
+Requirement already satisfied: pydantic<3,>=1 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from langchain) (1.10.13)
+Requirement already satisfied: anyio<5,>=3.5.0 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from openai) (3.7.1)
+Requirement already satisfied: distro<2,>=1.7.0 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from openai) (1.8.0)
+Requirement already satisfied: sniffio in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from openai) (1.3.0)
+Requirement already satisfied: attrs>=17.3.0 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from aiohttp<4.0.0,>=3.8.6->llama-index) (23.1.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from aiohttp<4.0.0,>=3.8.6->llama-index) (6.0.4)
+Requirement already satisfied: yarl<2.0,>=1.0 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from aiohttp<4.0.0,>=3.8.6->llama-index) (1.9.2)
+Requirement already satisfied: frozenlist>=1.1.1 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from aiohttp<4.0.0,>=3.8.6->llama-index) (1.4.0)
+Requirement already satisfied: aiosignal>=1.1.2 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from aiohttp<4.0.0,>=3.8.6->llama-index) (1.3.1)
+Requirement already satisfied: idna>=2.8 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from anyio<5,>=3.5.0->openai) (3.4)
+Requirement already satisfied: soupsieve>1.2 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from beautifulsoup4<5.0.0,>=4.12.2->llama-index) (2.5)
+Requirement already satisfied: marshmallow<4.0.0,>=3.18.0 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from dataclasses-json->llama-index) (3.20.1)
+Requirement already satisfied: wrapt<2,>=1.10 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from deprecated>=1.2.9.3->llama-index) (1.16.0)
+Requirement already satisfied: certifi in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from httpx->llama-index) (2023.11.17)
+Requirement already satisfied: httpcore in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from httpx->llama-index) (1.0.2)
+Requirement already satisfied: jsonpointer>=1.9 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from jsonpatch<2.0,>=1.33->langchain) (2.4)
+Requirement already satisfied: packaging<24.0,>=23.2 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from langchain-core<0.2,>=0.1->langchain) (23.2)
+Requirement already satisfied: urllib3 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from minio>=7.0.0->pymilvus) (1.26.18)
+Requirement already satisfied: argon2-cffi in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from minio>=7.0.0->pymilvus) (23.1.0)
+Requirement already satisfied: pycryptodome in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from minio>=7.0.0->pymilvus) (3.19.0)
+Requirement already satisfied: python-dateutil>=2.8.2 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from pandas->llama-index) (2.8.2)
+Requirement already satisfied: pytz>=2020.1 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from pandas->llama-index) (2023.3.post1)
+Requirement already satisfied: tzdata>=2022.1 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from pandas->llama-index) (2023.3)
+Requirement already satisfied: charset-normalizer<4,>=2 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from requests>=2.31.0->llama-index) (3.3.2)
+Requirement already satisfied: greenlet!=0.4.17 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from SQLAlchemy>=1.4.49->SQLAlchemy[asyncio]>=1.4.49->llama-index) (3.0.1)
+Requirement already satisfied: colorama in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from tqdm->nltk) (0.4.6)
+Requirement already satisfied: mypy-extensions>=0.3.0 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from typing-inspect>=0.8.0->llama-index) (1.0.0)
+Requirement already satisfied: six>=1.5 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from python-dateutil>=2.8.2->pandas->llama-index) (1.16.0)
+Requirement already satisfied: argon2-cffi-bindings in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from argon2-cffi->minio>=7.0.0->pymilvus) (21.2.0)
+Requirement already satisfied: h11<0.15,>=0.13 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from httpcore->httpx->llama-index) (0.14.0)
+Requirement already satisfied: cffi>=1.0.1 in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from argon2-cffi-bindings->argon2-cffi->minio>=7.0.0->pymilvus) (1.16.0)
+Requirement already satisfied: pycparser in c:\users\somsh\appdata\local\programs\python\python311\lib\site-packages (from cffi>=1.0.1->argon2-cffi-bindings->argon2-cffi->minio>=7.0.0->pymilvus) (2.21)

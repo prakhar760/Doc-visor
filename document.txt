@@ -1,0 +1,46 @@
+Visual Speech Synthesis System Using Machine Learning  
+Rishabh Yaduwanshi1, Ashutosh Kumar Singh2, Rahul Kumar Sahoo3, Mr. Anurag Gupta (Mentor)  
+Department of Applied Computational Science and Engineering  
+GL Bajaj Institute of Technology and Management, Greater Noida  
+ 
+Abstract —This paper introduces a system designed to enhance 
+communication for individuals with hearing impairments by 
+providing visual speech synthesis. The system focuses on 
+extracting meaningful features from input visuals, specifically lip 
+movements, using advanced visual feature extraction techniques. 
+Leveraging machine learning algorithms, the system interprets 
+these features to generate real -time, contextually relevant visual 
+speech  outputs. Through experiments with hearing -impaired 
+participants, the system demonstrates its effectiveness in bridging 
+communication gaps. This research contributes to inclusive 
+technologies by offering an alternative means of expression 
+beyond traditiona l methods, fostering a more accessible and 
+inclusive society.  
+ 
+Keywords – Image processing, Machine Learning, Computer 
+Vision, CNN, LSTM  
+ 
+ 
+I.  INTRODUCTION  
+ 
+The synergy between machine learning and computer vision 
+has propelled advancements in technologies like visual speech 
+synthesis, with a particular emphasis on the interpretation of lip 
+movements. Visual speech synthesis holds immense promise in 
+augmenting communication modalities, especially for 
+individuals with hearing impairments, and con tributes 
+significantly to human -computer interaction technologies. This 
+research centres on the development of a Vision -Based Visual 
+Speech Synthesis System utilizing deep learning techniques, 
+specifically a convolutional neural network (CNN). It should be  
+integrated Bi -Directional Long Short -Term Memory (LSTM).  
+Traditionally, speech recognizing methods involve complex 
+manual processes for feature extraction and classification, 
+posing computational challenges.  
+ 
+This paper proposes an end -to-end deep learning architecture, 
+seamlessly incorporating feature extraction into the training 
+process.  Leveraging pre -trained CNN models, the system 
+adeptly extracts intricate features from pre -processed video 
+frames, with a specific focus on the critical lip regio n as the 
+Region of Interest (ROI).  
