@@ -1,2 +1,2 @@
-# tradxlink-tradevisor
-Trade Advisor LLM Model Solution
+# Doc-visor
+An LLM solution for querying based on your data.
