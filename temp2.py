@@ -61,8 +61,6 @@ os.environ["OPENAI_API_KEY"] = "YOUR OPENAI API KEY"
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-# openai.api_key ="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"
-
 #Starting the Vector Database
 from llama_index.vector_stores import MilvusVectorStore
 from milvus import default_server,debug_server
